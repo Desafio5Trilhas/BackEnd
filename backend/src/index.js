@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 server.use(express.json());
 
-server.use('/user', userRoutes)
+server.use('/user', userRoutes);
 
 server.get('/', (req, res) => {
   res.send('Backend rodando tranquilo e suave! 🚀');

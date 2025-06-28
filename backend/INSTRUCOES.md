@@ -14,13 +14,48 @@ Este documento explica de forma simples como o backend está organizado e qual �
 
 ```plaintext
 /src
-├── routes/ → Definem os endpoints (URLs)
-├── controllers/ → Recebem as requisições e retornam respostas
-├── services/ → Regras de negócio, processam dados e decisões
-├── repositories/ → Acesso direto ao banco de dados (Prisma)
-├── prisma/ → Modelos e configuração do banco (schema.prisma)
-├── prismaClient.js → Conexão Prisma
-└── index.js → Arquivo principal que sobe o servidor
+├── routes/               → Definem os endpoints (URLs)
+│   └── userRoutes.js     → Exemplo de rotas específicas
+│   └── authRoutes.js
+│   └── trilhaRoutes.js
+│
+├── controllers/          → Recebem as requisições e retornam respostas
+│   └── userController.js
+│   └── authController.js
+│   └── trilhaController.js
+│
+├── services/             → Regras de negócio, processam dados e decisões
+│   └── userService.js
+│   └── trilhaService.js
+│
+├── repositories/         → Acesso direto ao banco de dados (Prisma)
+│   └── userRepository.js
+│   └── trilhaRepository.js
+│
+├── middlewares/          → Validação, autenticação e tratamento de erros
+│   └── authMiddleware.js
+│   └── errorHandler.js
+│   └── validateRequest.js
+│
+├── utils/                → Funções auxiliares (formatar data, gerar tokens etc.)
+│   └── jwt.js
+│   └── hash.js
+│
+├── config/               → Configurações da aplicação
+│   └── env.js            → Carrega variáveis de ambiente
+│   └── cors.js           → Configuração do CORS
+│
+├── prisma/               → Modelos e configuração do banco (schema.prisma)
+│   └── schema.prisma
+│
+├── prismaClient.js       → Inicialização da conexão com Prisma
+│
+├── docs/                 → Documentação da API (Swagger, Postman ou .md)
+│   └── swagger.json
+│   └── api-docs.md
+│
+└── index.js              → Arquivo principal que sobe o servidor
+
 ```
 
 ---

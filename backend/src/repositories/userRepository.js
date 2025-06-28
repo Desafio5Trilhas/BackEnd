@@ -1,11 +1,29 @@
-// Simulação com banco de dados em memória ou usando um ORM (ex: Sequelize, Prisma, etc.)
+import prisma from '../prismaClient.js';
 
 const findByEmail = async (email) => {
-  return await User.findOne({ where: { email } });
+  return await prisma.user.findUnique({
+    where: { email },
+  });
 };
 
 const create = async ({ nome, email, senha }) => {
-  return await User.create({ nome, email, senha });
+  return await prisma.user.create({
+    data: {
+      nome,
+      email,
+      senha,
+    },
+  });
 };
 
-export default {findByEmail, create};
+const findById = async (id) => {
+  return await prisma.user.findUnique({
+    where: { id },
+  });
+};
+
+export default {
+  findByEmail,
+  create,
+  findById,
+};
