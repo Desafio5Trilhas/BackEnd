@@ -1,6 +1,6 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const userRepository = require('../repositories/userRepository');
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken'
+import userRepository from '../repositories/userRepository.js';
 
 const JWT_SECRET = 'seusegredoaqui';
 
@@ -24,7 +24,4 @@ const loginUser = async ({ email, senha }) => {
   return token;
 };
 
-module.exports = {
-  registerUser,
-  loginUser
-};
+export default {registerUser, loginUser};
