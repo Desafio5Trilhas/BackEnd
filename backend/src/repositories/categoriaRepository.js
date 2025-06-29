@@ -1,4 +1,4 @@
-import prisma from '../prisma/prismaClient.js';
+import prisma from '../prismaClient.js';
 
 const create = async ({ nome, descricao }) => {
   return await prisma.categoria.create({
