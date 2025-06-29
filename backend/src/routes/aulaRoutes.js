@@ -1,6 +1,7 @@
 import express from 'express';
 import aulaController from '../controllers/aulaController.js';
 import authMiddleware from '../middlewares/authMiddleware.js';
+import roleMiddleware from '../middlewares/roleMiddleware.js';
 
 const router = express.Router();
 
