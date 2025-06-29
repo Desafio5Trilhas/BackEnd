@@ -10,7 +10,10 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prisma:generate": "prisma generate",
+    "migrate:dev": "prisma migrate dev",        
+    "migrate:deploy": "prisma migrate deploy"  
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",

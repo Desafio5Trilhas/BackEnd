@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  nome         String
+  email        String    @unique
+  senha        String
+  tipoUsuario  String    @default("aluno") // aluno | tutor | admin
+  createdAt    DateTime  @default(now())
+
+  aulas        Aula[]    @relation("TutorAulas") // Aulas cadastradas se for tutor
+  progresso    Progresso[]
+}
+
+model Categoria {
+  id          Int       @id @default(autoincrement())
+  nome        String
+  descricao   String?
+  createdAt   DateTime  @default(now())
+
+  aulas       Aula[]
+}
+
+model Aula {
+  id              Int       @id @default(autoincrement())
+  titulo          String
+  descricao       String?
+  linkYoutube     String    // Ex: https://youtube.com/watch?v=abc123
+  dataPublicacao  DateTime  @default(now())
+
+  categoriaId     Int
+  tutorId         Int
+
+  categoria       Categoria @relation(fields: [categoriaId], references: [id])
+  tutor           User      @relation("TutorAulas", fields: [tutorId], references: [id])
+  progresso       Progresso[]
+}
+
+model Progresso {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  aulaId    Int
+  concluido Boolean  @default(true)
+  data      DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  aula      Aula     @relation(fields: [aulaId], references: [id])
+
+  @@unique([userId, aulaId]) // Um único progresso por aula por usuário
+}
+

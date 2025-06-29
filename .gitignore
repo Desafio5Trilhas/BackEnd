@@ -24,9 +24,10 @@ Environment variables
 .env.test.local
 .env.production.local
 
-Prisma
+#Prisma
 prisma/migrations/
 prisma/dev.db
+!prisma/schema.prisma
 
 OS files
 .DS_Store
