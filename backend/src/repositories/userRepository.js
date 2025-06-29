@@ -22,8 +22,16 @@ const findById = async (id) => {
   });
 };
 
+const updateTipoUsuario = async (id, tipoUsuario) => {
+  return await prisma.user.update({
+    where: { id },
+    data: { tipoUsuario },
+  });
+};
+
 export default {
   findByEmail,
   create,
   findById,
+  updateTipoUsuario,
 };

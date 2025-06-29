@@ -27,7 +27,7 @@ const loginUser = async ({ email, senha }) => {
   if (!isMatch) throw new Error('Senha incorreta.');
 
   const token = jwt.sign(
-    { id: user.id, email: user.email },
+    { id: user.id, email: user.email, tipoUsuario: user.tipoUsuario },
     JWT_SECRET,
     { expiresIn: '1h' }
   );
@@ -35,4 +35,18 @@ const loginUser = async ({ email, senha }) => {
   return token;
 };
 
-export default { registerUser, loginUser };
+const promoverUsuario = async ({ id, tipoUsuario }) => {
+  const user = await userRepository.findById(id);
+  if (!user) throw new Error('Usuário não encontrado.');
+
+  const tiposPermitidos = ['aluno', 'tutor', 'admin'];
+  if (!tiposPermitidos.includes(tipoUsuario)) {
+    throw new Error('Tipo de usuário inválido.');
+  }
+
+  const userAtualizado = await userRepository.updateTipoUsuario(id, tipoUsuario);
+  const { senha, ...userSemSenha } = userAtualizado;
+  return userSemSenha;
+};
+
+export default { registerUser, loginUser, promoverUsuario };

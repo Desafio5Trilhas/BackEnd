@@ -39,4 +39,16 @@ const getLoggedUser = async (req, res) => {
   }
 };
 
-export default { registerUser, loginUser };
+const promoverUsuario = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { tipoUsuario } = req.body;
+
+    const userAtualizado = await userService.promoverUsuario({ id: Number(id), tipoUsuario });
+    res.status(200).json({ message: 'Usuário atualizado com sucesso!', user: userAtualizado });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+export default { registerUser, loginUser, getLoggedUser, promoverUsuario };
