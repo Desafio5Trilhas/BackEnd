@@ -84,7 +84,7 @@ npm run dev
 
 ## 📂 Endpoints da API
 
-> Todos os detalhes estão documentados em [`docs/api-docs.md`](docs/api-docs.md)
+> Todos os detalhes estão documentados em [`docs/API_EducaMA_Documentacao.md`](docs/API_EducaMA_Documentacao.md)
 
 ### 👤 Usuário
 - `POST /user/cadastro` – Cadastro

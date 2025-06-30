@@ -3,7 +3,7 @@
 
 ## 🔗 URL Base
 ```
-a ser feito o deploy, mas um exemplo seria: https://educama-api.onrender.com
+https://api-educama.onrender.com/
 ```
 
 ---
