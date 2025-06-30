@@ -42,7 +42,8 @@ Authorization: Bearer <token>
     "id": 1,
     "nome": "João",
     "email": "joao@email.com",
-    "tipoUsuario": "aluno"
+    "tipoUsuario": "aluno",
+    "createdAt": "2025-06-29T23:57:46.003Z"
   }
 }
 ```
@@ -78,6 +79,19 @@ Authorization: Bearer <token>
 Authorization: Bearer <token>
 ```
 
+**Resposta:**
+```json
+{
+  "user": {
+    "id": 1,
+    "email": "joao@email.com",
+    "tipoUsuario": "aluno",
+    "iat": "111",
+    "exp": "111"
+  }
+}
+```
+
 ---
 
 #### PUT `/user/:id/promover` 🔒 (Admin)
@@ -92,6 +106,20 @@ Authorization: Bearer <token>
 ```json
 {
   "tipoUsuario": "tutor"
+}
+```
+
+**Resposta:**
+```json
+{
+  "message": "Usuário atualizado com sucesso!",
+  "user": {
+    "id": 1,
+    "nome": "João",
+    "email": "joao@email.com",
+    "tipoUsuario": "tutor",
+    "createdAt": "2025-06-29T23:57:46.003Z"
+  }
 }
 ```
 
@@ -110,6 +138,20 @@ Authorization: Bearer <token>
 }
 ```
 
+**Resposta:**
+```json
+{
+  "message": "Categoria criada com sucesso!",
+  "categoria": {
+    "id": 1,
+    "nome": "Matemática",
+    "descricao": "Aulas de matemática básica e avançada.",
+    "createdAt": "2025-06-30T00:37:31.599Z"
+  }
+}
+```
+
+
 ---
 
 #### GET `/categorias`
@@ -121,7 +163,8 @@ Authorization: Bearer <token>
   {
     "id": 1,
     "nome": "Matemática",
-    "descricao": "Aulas de matemática básica e avançada."
+    "descricao": "Aulas de matemática básica e avançada.",
+    "createdAt": "2025-06-30T00:37:31.599Z"
   }
 ]
 ```
@@ -148,10 +191,52 @@ Authorization: Bearer <token>
 }
 ```
 
+**Resposta:**
+```json
+{
+  "message": "Aula criada com sucesso!",
+  "aula": {
+    "id": 1,
+    "titulo": "Funções do 1º grau",
+    "descricao": "Explicação básica com exemplos",
+    "linkYoutube": "https://youtube.com/watch?v=abc123",
+    "dataPublicacao": "2025-06-30T00:42:23.690Z",
+    "categoriaId": 1,
+    "tutorId": 2
+  }
+}
+```
+
 ---
 
 #### GET `/aulas`
 **Descrição:** Lista todas as aulas.
+
+**Resposta:**
+```json
+[
+  {
+    "id": 1,
+    "titulo": "Funções do 1º grau",
+    "descricao": "Explicação básica com exemplos",
+    "linkYoutube": "https://youtube.com/watch?v=abc123",
+    "dataPublicacao": "2025-06-30T00:42:23.690Z",
+    "categoriaId": 1,
+    "tutorId": 2,
+    "categoria": {
+      "id": 1,
+      "nome": "Matemática",
+      "descricao": "Aulas de matemática básica e avançada.",
+      "createdAt": "2025-06-30T00:37:31.599Z"
+    },
+    "tutor": {
+      "id": 2,
+      "nome": "Leonardo",
+      "email": "teste@email.com"
+    }
+  }
+]
+```
 
 ---
 
@@ -168,7 +253,21 @@ Authorization: Bearer <token>
 **Body:**
 ```json
 {
-  "aulaId": 5
+  "aulaId": 1
+}
+```
+
+**Resposta:**
+```json
+{
+  "message": "Progresso registrado com sucesso!",
+  "progresso": {
+    "id": 1,
+    "userId": 1,
+    "aulaId": 1,
+    "concluido": true,
+    "data": "2025-06-30T00:48:02.006Z"
+  }
 }
 ```
 
@@ -176,6 +275,34 @@ Authorization: Bearer <token>
 
 #### GET `/progresso` 🔒
 **Descrição:** Lista progresso do usuário logado.
+
+**Resposta:**
+```json
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "aulaId": 1,
+    "concluido": true,
+    "data": "2025-06-30T00:48:02.006Z",
+    "aula": {
+      "id": 1,
+      "titulo": "Funções do 1º grau",
+      "descricao": "Explicação básica com exemplos",
+      "linkYoutube": "https://youtube.com/watch?v=abc123",
+      "dataPublicacao": "2025-06-30T00:42:23.690Z",
+      "categoriaId": 1,
+      "tutorId": 2,
+      "categoria": {
+        "id": 1,
+        "nome": "Matemática",
+        "descricao": "Aulas de matemática básica e avançada.",
+        "createdAt": "2025-06-30T00:37:31.599Z"
+      }
+    }
+  }
+]
+```
 
 ---
 
