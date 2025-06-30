@@ -1,4 +1,4 @@
-import prisma from '../prismaClient.js';
+import prisma from '../config/prismaClient.js';
 
 const marcarComoConcluida = async (userId, aulaId) => {
   return await prisma.progresso.create({

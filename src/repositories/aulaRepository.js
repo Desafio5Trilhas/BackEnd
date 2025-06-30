@@ -1,4 +1,4 @@
-import prisma from '../prismaClient.js';
+import prisma from '../config/prismaClient.js';
 
 const create = async ({ titulo, descricao, linkYoutube, categoriaId, tutorId }) => {
   return await prisma.aula.create({
