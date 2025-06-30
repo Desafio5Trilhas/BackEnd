@@ -15,7 +15,7 @@ Este back-end fornece os serviços de autenticação, gerenciamento de usuários
 - Prisma ORM
 - JWT para autenticação
 - Docker (para ambiente local opcional)
-- Documentação da API em Markdown (`docs/api-docs.md`)
+- Documentação da API em Markdown (`docs/API_EducaMA_Documentacao.md`)
 
 ---
 
@@ -24,8 +24,8 @@ Este back-end fornece os serviços de autenticação, gerenciamento de usuários
 ### 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/educaMA-backend.git
-cd educaMA-backend
+git clone https://github.com/Desafio5Trilhas/BackEnd.git
+cd BackEnd
 ```
 
 ### 2. Instalar as dependências
