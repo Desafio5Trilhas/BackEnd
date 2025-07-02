@@ -141,4 +141,5 @@ npm run dev
 
 - Leonardo Ferreira – Back-end
 - Abnadab Martins Castro – Back-end
+- Rayan Batista Silva – Back-end
 - [Outros nomes do time...]
