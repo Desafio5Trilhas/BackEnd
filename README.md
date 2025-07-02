@@ -140,4 +140,5 @@ npm run dev
 ## 🧑‍💻 Time EducaMA
 
 - Leonardo Ferreira – Back-end
+- Abnadab Martins Castro – Back-end
 - [Outros nomes do time...]
